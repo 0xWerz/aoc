@@ -2,20 +2,17 @@ use std::fs;
 
 fn part1(input: &str) -> i32 {
     let mut total = 0;
+
     for line in input.lines() {
-        let mut first = 0;
-        let mut last = 0;
-        for c in line.chars() {
-            if c.is_digit(10) {
-                if first == 0 {
-                    first = c.to_digit(10).unwrap();
-                }
-                last = c.to_digit(10).unwrap();
-            }
-        }
-        let sum: i32 = (first * 10 + last) as i32;
-        total += sum;
+        let nums: Vec<i32> = line
+            .chars()
+            .filter_map(|digit| digit.to_digit(10))
+            .map(|digit: u32| digit as i32)
+            .collect();
+        println!("{:?}", nums);
+        total += nums[0] * 10 + nums[nums.len() - 1];
     }
+
     total
 }
 
@@ -73,7 +70,6 @@ fn part2(input: &str) -> i32 {
 
 fn main() {
     let puzzle = fs::read_to_string("input.txt").expect("Something went wrong reading the file");
-
     println!("Part 1: {}", part1(&puzzle));
     println!("Part 2: {}", part2(&puzzle));
 }
