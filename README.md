@@ -5,4 +5,4 @@
 
 ## 2023
 
-- [Day 1: Day 1: Trebuchet?!](2023/day1/README.md) - Rust
+- [Day 1: Day 1: Trebuchet?!](2023/day1) - Rust
